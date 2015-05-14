@@ -99,4 +99,21 @@ footer and navigation will remain the same and we don't want to replicate this w
 
 	<blink>Hi!</blink>
 
+### Nested  `$Layout` using `renderWith`
 
+When rendering a child template with a specific root template it should be noted that the child template is listed first followed by the parent template(s).
+
+**mysite/code/Page.php
+
+	class Page_Controller extends ContentController {
+		
+	    private static $allowed_actions = array('confirm');
+	
+	    public function confirm() {
+				return $this->renderWith("Confirm_Page", "Page");
+	    }
+	}
+
+**templates\Layout\Confirm_Page.ss
+
+  <strong>This is confirmed</strong>
